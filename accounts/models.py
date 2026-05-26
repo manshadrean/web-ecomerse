@@ -26,6 +26,7 @@ class MyAccountManager(BaseUserManager):
         user = self.create_user(
             email = self.normalize_email(email),
             username =username,
+            password =password,
             first_name = first_name,
             last_name =last_name
         )
@@ -55,11 +56,13 @@ class Account(AbstractBaseUser):
     USERNAME_FIELD  = 'email'
     REQUIRED_FIELDS = ['username','first_name','last_name']
 
+    objects = MyAccountManager()
+
     def __str__(self):
         return self.email
     
     def has_perm(self, perm, obj=None):
-        return is_admin
+        return self.is_admin
     
     def has_module_perms(self, add_labers):
         return True

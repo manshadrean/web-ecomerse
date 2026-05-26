@@ -37,8 +37,8 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'accounts',
     'category',
-    'accounts'
 ]
 
 MIDDLEWARE = [
@@ -69,6 +69,8 @@ TEMPLATES = [
 ]
 
 WSGI_APPLICATION = 'webecomerse.wsgi.application'
+
+AUTH_USER_MODEL = 'accounts.Account'
 
 
 # Database
